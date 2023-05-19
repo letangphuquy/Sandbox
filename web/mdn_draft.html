@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mozilla Developer Note: Basic HTML, CSS, JavaScript</title>
+    <link rel="stylesheet" href="mdn_style.css" />
+  </head>
+  <body>
+    <p>
+      <abbr title="the National Aeronautics and Space Administration"
+        >NASA</abbr
+      >
+      sure does some exciting work.
+    </p>
+
+    <!-- Quotations -->
+
+    <p>
+      Hello and welcome to my motivation page. As
+      <a href="http://www.brainyquote.com/quotes/authors/c/confucius.html">
+        <cite> Confucius' quotes site </cite>
+      </a>
+      says:
+    </p>
+    <blockquote
+      cite="http://www.brainyquote.com/quotes/authors/c/confucius.html"
+    >
+      It does not matter how slowly you go as long as you do not stop
+    </blockquote>
+    <p>
+      I also love the concept of positive thinking, and
+      <q cite="http://example.com/affirmationsforpositivethinking">
+        The Need To Eliminate Negative Self Talk
+      </q>
+      (as mentioned in
+      <a href="http://example.com/affirmationsforpositivethinking">
+        <cite> Affirmations for Positive Thinking </cite>
+      </a>
+      .)
+    </p>
+
+    <!-- Address tag -->
+
+    <address>
+      <p>
+        Chris Mills<br />
+        Manchester<br />
+        The Grim North<br />
+        UK
+      </p>
+
+      <ul>
+        <li>Tel: 01234 567 890</li>
+        <li>Email: me@grim-north.co.uk</li>
+      </ul>
+    </address>
+
+    <!-- Advanced HTML animals -->
+    <h1>Advanced HTML Animals</h1>
+
+    <dl>
+      <dt>Llama</dt>
+      <dd>
+        Tall, woolly quadruped, pointy ears. Sometimes rideable, but grumpy and
+        spits a lot. Big fan of list items.
+      </dd>
+      <dt>Anaconda</dt>
+      <dd>
+        A very large constrictor snake; travels rapidly by way of anchors to
+        sneak up on his prey.
+      </dd>
+      <dt>Hippopotamus</dt>
+      <dd>His description is bottomless.</dd>
+    </dl>
+    <section aria-labelledby="test_the_section_tag">
+      <h1 id="test_the_section_tag">
+        <a href="#test_the_section_tag">Advanced text semantics</a>
+      </h1>
+
+      <p>Let's start with a quote:</p>
+
+      <blockquote>
+        By default, <abbr>HTML</abbr>, Hypertext Markup Language, is accessible,
+        if used correctly.
+      </blockquote>
+
+      <p>
+        <abbr>CSS</abbr>, Cascading Style Sheets, can also be used to make web
+        pages more, or less, accessible.
+      </p>
+
+      <p>
+        Chemical Formulae: H<sub>2</sub>O (Water), C<sub>2</sub>H<sub>6</sub>O
+        (Ethanol).
+      </p>
+
+      <p>
+        Dates: <time datetime="2019-12-25">December 25th 2019</time> (Christmas
+        Day), <time datetime="2019-11--2">November 2nd 2019</time> (Día de los
+        Muertos).
+      </p>
+    </section>
+
+    <h1>Below is a simple video example</h1>
+
+    <!-- <iframe
+      width="790"
+      height="444"
+      src="https://www.youtube.com/embed/CPYdKPjvSkI"
+      title="Tiếng Gọi Thanh Niên - Thanh Niên Hành Khúc | Lưu Hữu Phước | Âm nhạc cổ điển Việt Nam"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe> -->
+    <br />
+    <video
+      src="tieng-goi-thanh-nien.mp4"
+      controls
+      width="600"
+      height="400"
+      autoplay
+      loop
+      preload="auto"
+    >
+      <p>
+        Your browser doesn't support HTML5 video. Here is a
+        <a href="https://youtu.be/CPYdKPjvSkI">link to the video</a> instead.
+      </p>
+    </video>
+  </body>
+</html>
