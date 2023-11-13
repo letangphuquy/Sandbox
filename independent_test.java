@@ -1,36 +1,27 @@
-import java.nio.ByteBuffer;
-import java.nio.charset.Charset;
-import java.util.Base64;
-import java.util.stream.Stream;
+import java.util.Scanner;
 
-/**
- * independent_test
- */
-public class independent_test {
-    static void print(Object[] obj) {
-        System.out.println("Debug: " + obj);
-        Stream.of(obj).forEach(System.out::println);
-    }
+public class independent_test {    
     public static void main(String[] args) {
-        User user = new User("username", "password", "userID");
-        Object[] obj = user.toObjectArray();
-        print(obj);
-        obj[0] = "abc";
-        print(obj);
-        System.out.println("Printing to see if user's data is modified:");
-        print(user.toObjectArray());
+        try (Scanner inp = new Scanner(System.in)) {
+            System.out.println("Enter the number of students: ");
+            int n = inp.nextInt();
+            inp.nextLine();
+            // parse int
+            Integer.parseInt(inp.nextLine());
+            Double.parseDouble(inp.nextLine());
+            Float.parseFloat(inp.nextLine());
+            Long.parseLong(inp.nextLine());
+            
+            for (int i = 0; i < n; i++) {
+                System.out.print("Name: ");
+                String name = inp.nextLine();
+                System.out.print("Age: ");
+                int age = inp.nextInt();
+                System.out.println("Recorded: " + name + " " + age);
+            }
+        }
     }   
 }
-class User {
-    String username;
-    String password;
-    String userID;
-    public User(String username, String password, String userID) {
-        this.username = username;
-        this.password = password;
-        this.userID = userID;
-    }
-    Object[] toObjectArray() {
-        return new Object[] {username, password, userID};
-    }
-}
+
+
+

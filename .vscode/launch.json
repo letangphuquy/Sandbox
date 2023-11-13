@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "independent_test",
+            "request": "launch",
+            "mainClass": "independent_test",
+            "projectName": "Sandbox_f47b8731"
+        },
+        {
+            "type": "java",
             "name": "ClientE2E",
             "request": "launch",
             "mainClass": "ClientE2E",
