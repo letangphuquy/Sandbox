@@ -18,7 +18,7 @@ public class SinhVien_quynh extends Abstract1_quynh implements QuanLySinhVien_qu
     	System.out.print("Nhập điểm : ");
     	double diemTB_quynh = sc.nextDouble();
         setdiemGPA_quynh(diemTB_quynh);
-        //sc.close();
+        sc.close();
     }
     @Override	
     public String loaiSV_quynh() 							//xep loai sv dua vao diem GPA
@@ -47,7 +47,7 @@ public class SinhVien_quynh extends Abstract1_quynh implements QuanLySinhVien_qu
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập năm sinh: ");
         int namSinh = scanner.nextInt();
-        //scanner.close(); 
+        scanner.close(); 
         int tuoi_quynh = 2023 - namSinh;
         System.out.println("Số tuổi: " + tuoi_quynh);
         settuoi_quynh(tuoi_quynh);
@@ -75,7 +75,7 @@ public class SinhVien_quynh extends Abstract1_quynh implements QuanLySinhVien_qu
         System.out.print("Nhập tên sinh viên: ");
         String ten_quynh = scanner.nextLine();
         settenSinhVien_quynh(ten_quynh);
-        //scanner.close(); 
+        scanner.close(); 
         return ten_quynh;
     }
     private void settenSinhVien_quynh(String ten_quynh) 

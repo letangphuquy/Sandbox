@@ -46,7 +46,9 @@ public class Main_quynh {
 				break;
 
 			}
+			sc.close();
 		}
+
 	}
 
 }
