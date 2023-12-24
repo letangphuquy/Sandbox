@@ -1,21 +1,25 @@
 import '@/styles/globals.css'
 
 export const metadata = {
-    title: "Promptopia",
-    description: "AI-powered Chat Prompts everywhere"
+  title: "Promptopia",
+  description: "AI-powered Chat Prompts everywhere"
 }
 
-const RootLayout = ({children}) => {
+import Provider from '@/components/Provider'
+
+const RootLayout = ({ children }) => {
   return (
-    <html lang = "en">
-        <body>
-            <div className="main">
-                <div className="gradient"/>
-            </div>
-            <main className="app">
-              {children}
-            </main>
-        </body>
+    <html lang="en">
+      <body>
+        <Provider>
+          <div className="main">
+            <div className="gradient" />
+          </div>
+          <main className="app">
+            {children}
+          </main>
+        </Provider>
+      </body>
     </html>
   )
 }
