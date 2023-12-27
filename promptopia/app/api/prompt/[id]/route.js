@@ -21,6 +21,7 @@ export const PATCH = async(request, {params}) => {
         const oldPrompt = await Prompt.findById(params.id);
         if (!oldPrompt)
             return new Response("No prompt to edit!", {status: 404})
+        /*
         const newPrompt = {
             creator: oldPrompt.creator, 
             prompt, 
@@ -30,6 +31,11 @@ export const PATCH = async(request, {params}) => {
         console.log("PATCH: Editing from ", oldPrompt, " to ", newPrompt) 
         await Prompt.replaceOne({_id: params.id}, newPrompt);
         return new Response(JSON.stringify(newPrompt), {status: 200})
+        */
+       oldPrompt.prompt = prompt;
+       oldPrompt.tag = tag;
+       await oldPrompt.save()
+       return new Response(JSON.stringify(oldPrompt), {status: 200})
     } catch (error) {
         return new Response("Error editing prompt", {status: 500})
     }

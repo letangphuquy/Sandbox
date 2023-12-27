@@ -12,17 +12,19 @@ const MyProfile = () => {
     const [posts, setPosts] = useState([]);
     const handleEdit = async (post) => {
         router.push("/update-prompt?id=" + post._id);
-        // fetchPosts()
-        // const response = await fetch(`/api/prompt/${post._id}/`, {
-        //     method: 'PATCH',
-        //     body: JSON.stringify(post)
-        // })
-        // const data = await response.json();
-        // console.log("New content: ", data)
-        // router.push("/profile")
+        fetchPosts()
     }
     const handleDelete = async (post) => {
-
+        if (confirm("Are you sure you want to delete this?")) {
+            try {
+                await fetch("/api/prompt/" + post._id, { method: "DELETE"});
+            } catch (error) {
+                console.log("Could not delete")                
+            } finally {
+                router.push('/profile');
+            }
+        }
+        fetchPosts()
     }
 
     const fetchPosts = async() => {
@@ -30,6 +32,7 @@ const MyProfile = () => {
         const data = await response.json();
         setPosts(data)
     }
+
     useEffect(() => {
         if (session?.user.id) fetchPosts()
     }, [])

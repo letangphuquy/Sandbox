@@ -3,8 +3,10 @@ import Form from '@/components/Form'
 
 import { useEffect, useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { useSession } from 'next-auth/react'
 
 const EditPrompt = () => {
+    const {data : session} = useSession()
     const router = useRouter();
     const searchParams = useSearchParams();
     const postId = searchParams.get('id')
@@ -42,7 +44,7 @@ const EditPrompt = () => {
         }
     }
 
-    return (
+    return ( session?.user &&
         <Form
             type="Edit"
             post={post}
