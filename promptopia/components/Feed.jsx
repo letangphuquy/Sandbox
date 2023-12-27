@@ -3,17 +3,17 @@ import { useEffect, useState } from 'react'
 
 import PromptCard from './PromptCard'
 
-const PromptCardList = ({data, handleTagClick}) => {
+const PromptCardList = ({ data, handleTagClick }) => {
   // data.forEach((post) => { console.log(post)})
   return (
     <div className='mt-16 prompt_layout'>
       {data.map((post) => (
-        <PromptCard 
+        <PromptCard
           key={post._id}
           post={post}
           handleTagClick={handleTagClick}
-          />
-          ))}
+        />
+      ))}
     </div>
   )
 }
@@ -21,19 +21,35 @@ const PromptCardList = ({data, handleTagClick}) => {
 const Feed = () => {
   const [searchText, setSearchText] = useState("")
   const [posts, setPosts] = useState([]);
-  
-  const handleSearchChange = async (e) => {
-    e.preventDefault();
+
+  const criteria = { tag: "", keyword: "" }
+
+  const fetchPosts = async () => {
+    const response = await fetch("/api/prompt", {
+      method: 'GET',
+      body: JSON.stringify(criteria)
+    });
+    const data = await response.json();
+    if (data) setPosts(data)
   }
-  
+
   useEffect(() => {
-    const fetchPosts = async() => {
-      const response = await fetch("/api/prompt");
-      const data = await response.json()
-      if (data) setPosts(data)
-    }
     fetchPosts();
   }, [])
+
+  const handleSearchChange = (e) => {
+    e.preventDefault();
+    if (keyword !== searchText) {
+      setSearchText(e.target.value);
+      keyword = searchText;
+      fetchPosts();
+    }
+  }
+
+  const handleTagClick = (tag) => {
+    criteria.tag = tag;
+    fetchPosts();
+  }
 
   return (
     <section className='feed'>
@@ -48,8 +64,8 @@ const Feed = () => {
         />
       </form>
       <PromptCardList
-        data = {posts}
-        handleTagClick = {() => {}}
+        data={posts}
+        handleTagClick={handleTagClick}
       />
     </section>
   )
