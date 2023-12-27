@@ -128,7 +128,7 @@ function Nav() {
                 </Link>
                 <button
                   type="button"
-                  onClick={ () => { setToggleDropdown(false); signOut() }}
+                  onClick={ () => { setToggleDropdown(false); signOut(); }}
                   className="black_btn w-full mt-3"
                 >
                   Sign Out
