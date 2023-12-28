@@ -38,7 +38,7 @@ const CreatePrompt = () => {
         }
     }
 
-    return (
+    return (session?.user &&
         <Form
             type="Create"
             post={post}

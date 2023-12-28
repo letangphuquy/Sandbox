@@ -19,16 +19,20 @@ const PromptCardList = ({ data, handleTagClick }) => {
 }
 
 const Feed = () => {
-  const [searchText, setSearchText] = useState("")
   const [posts, setPosts] = useState([]);
-
-  const criteria = { tag: "", keyword: "" }
+  const [searchText, setSearchText] = useState("");
+  const [tag, setTag] = useState("");
+  const filteredPosts = posts.filter((post) => {
+    if (searchText === "") return true;
+    if (tag) return post.tag == tag;
+    return post.creator.email.match(searchText) ||
+      post.creator.username.match(searchText) ||
+      post.prompt.match(searchText) ||
+      post.tag.match(searchText)
+  })
 
   const fetchPosts = async () => {
-    const response = await fetch("/api/prompt", {
-      method: 'GET',
-      body: JSON.stringify(criteria)
-    });
+    const response = await fetch("/api/prompt");
     const data = await response.json();
     if (data) setPosts(data)
   }
@@ -39,21 +43,15 @@ const Feed = () => {
 
   const handleSearchChange = (e) => {
     e.preventDefault();
-    if (keyword !== searchText) {
-      setSearchText(e.target.value);
-      keyword = searchText;
-      fetchPosts();
-    }
-  }
-
-  const handleTagClick = (tag) => {
-    criteria.tag = tag;
-    fetchPosts();
+    setSearchText(e.target.value);
+    setTag("");
   }
 
   return (
     <section className='feed'>
-      <form className='relative w-full flex-center'>
+      <form className='relative w-full flex-center'
+        onSubmit={(e) => { e.preventDefault() }}
+      >
         <input
           type='text'
           placeholder='Search for a tag or an author'
@@ -63,9 +61,12 @@ const Feed = () => {
           className='search_input peer'
         />
       </form>
+      {/* <p className='desc'>
+        Keyword = {searchText}
+      </p> */}
       <PromptCardList
-        data={posts}
-        handleTagClick={handleTagClick}
+        data={filteredPosts}
+        handleTagClick={(tag) => { setTag(tag); setSearchText(tag); } }
       />
     </section>
   )
