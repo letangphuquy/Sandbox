@@ -1,4 +1,4 @@
-.env
+*.env
 
 # Compiled class file
 *.class
@@ -57,3 +57,5 @@ replay_pid*
 *.exe
 *.out
 *.app
+promptopia/.env
+next-example/.env
